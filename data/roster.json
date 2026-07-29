@@ -67,54 +67,6 @@
       "status": "locked"
     },
     {
-      "id": "emilios",
-      "name": "Emilios",
-      "main": {
-        "class": "Hunter",
-        "spec": null,
-        "offSpec": null
-      },
-      "alt": {
-        "class": "Warlock",
-        "spec": "Demonology",
-        "offSpec": "Destruction"
-      },
-      "note": "they guy above me smells funny",
-      "status": "locked"
-    },
-    {
-      "id": "bigwill",
-      "name": "BigWill",
-      "main": {
-        "class": "Mage",
-        "spec": "Frost",
-        "offSpec": null
-      },
-      "alt": {
-        "class": "Demon Hunter",
-        "spec": "Devourer",
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
-    },
-    {
-      "id": "healer-way",
-      "name": "Healer of the Way",
-      "main": {
-        "class": "Monk",
-        "spec": "Mistweaver",
-        "offSpec": "Windwalker"
-      },
-      "alt": {
-        "class": "Druid",
-        "spec": "Feral",
-        "offSpec": "Restoration"
-      },
-      "note": "Couldnt select \"All the Above\" for alt class for some reason....",
-      "status": "locked"
-    },
-    {
       "id": "raevive",
       "name": "Raevive",
       "main": {
