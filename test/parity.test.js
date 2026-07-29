@@ -144,6 +144,34 @@ test('other cooldown profiles match the sheet', () => {
   assert.equal(at(d.cooldowns, '3 min').main, 1);
 });
 
+// ------------------------------------------------- offspec/alt regression
+//
+// Alt columns are pinned to computed behaviour, not to the sheet's displayed
+// values. Two reasons:
+//
+//   1. The sheet's alt formulas are inconsistent row to row about whether the
+//      main OFF-SPEC counts. Q25 (Execute Damage) omits it; U16 (Cheat Death)
+//      and U21/U22 include it. We include it everywhere, consistently.
+//   2. Tim's copy dates from 2026-01-01; the template was revised on
+//      2026-02-04 (it gained the "3% Damage" row). The alt figures shown in
+//      his copy were not produced by the formulas extracted here.
+//
+// Class and tier-token alt counts DO match the sheet exactly and are asserted
+// against it above. These are a regression guard.
+
+test('alt counts are stable', () => {
+  assert.equal(at(d.roles, 'Tank').alt, 8);
+  assert.equal(at(d.roles, 'Healer').alt, 3);
+  assert.equal(at(d.buffs, 'Execute Damage').alt, 8);
+  assert.equal(at(d.utility, 'Cheat Death').alt, 7);
+});
+
+test('Combat Res alt no longer double-counts the main roster', () => {
+  // The sheet's Q12 added the main-class counts into the alt column and skipped
+  // the bench filter, reporting 14. Only Warlock/Druid/DK/Paladin ALTS count.
+  assert.equal(at(d.buffs, 'Combat Res').alt, 5);
+});
+
 test('specs with no cooldown profile are surfaced, not dropped', () => {
   // Arcane, Frost, Elemental and Devourer have no profile in the source template.
   assert.ok(d.cooldownUnassigned.main > 0);
