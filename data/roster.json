@@ -97,6 +97,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pms6lte2l4589",
+      "name": "Ninjini",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
