@@ -33,6 +33,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pms6eam2c4094",
+      "name": "Ninjini",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
