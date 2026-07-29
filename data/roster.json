@@ -23,8 +23,8 @@
       "name": "Candescent",
       "main": {
         "class": "Paladin",
-        "spec": null,
-        "offSpec": null
+        "spec": "Holy",
+        "offSpec": "Retribution"
       },
       "alt": {
         "class": null,
