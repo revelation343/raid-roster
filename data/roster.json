@@ -67,54 +67,6 @@
       "status": "locked"
     },
     {
-      "id": "raevive",
-      "name": "Raevive",
-      "main": {
-        "class": "Priest",
-        "spec": "Holy",
-        "offSpec": "Shadow"
-      },
-      "alt": {
-        "class": "Druid",
-        "spec": "Restoration",
-        "offSpec": "Guardian"
-      },
-      "note": "I don't mind tanking or healing whatevers more needed :)",
-      "status": "locked"
-    },
-    {
-      "id": "pwandacookie",
-      "name": "Pwandacookie",
-      "main": {
-        "class": "Mage",
-        "spec": "Arcane",
-        "offSpec": "Fire"
-      },
-      "alt": {
-        "class": "Warlock",
-        "spec": "Demonology",
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
-    },
-    {
-      "id": "valadrim",
-      "name": "Valadrim",
-      "main": {
-        "class": "Mage",
-        "spec": "Arcane",
-        "offSpec": "Fire"
-      },
-      "alt": {
-        "class": "Rogue",
-        "spec": "Assassination",
-        "offSpec": "Outlaw"
-      },
-      "note": "",
-      "status": "locked"
-    },
-    {
       "id": "plumis",
       "name": "Plumis",
       "main": {
