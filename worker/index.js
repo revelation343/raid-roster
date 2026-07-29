@@ -3,16 +3,19 @@ import { validateRoster } from './validate.js';
 const REPO = 'revelation343/raid-roster';
 const PATH = 'data/roster.json';
 
+const CORS = origin => ({
+  'Access-Control-Allow-Origin': origin,
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Max-Age': '86400',
+});
+
 function reply(obj, status, origin) {
+  // 204 must not carry a body — constructing one with content throws.
+  if (status === 204) return new Response(null, { status, headers: CORS(origin) });
   return new Response(JSON.stringify(obj), {
     status,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': origin,
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Max-Age': '86400',
-    },
+    headers: { 'Content-Type': 'application/json', ...CORS(origin) },
   });
 }
 
