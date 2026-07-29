@@ -145,6 +145,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pms6n854d5243",
+      "name": "Hygara",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
