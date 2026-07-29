@@ -71,7 +71,7 @@
       "name": "Lump",
       "main": {
         "class": "Demon Hunter",
-        "spec": null,
+        "spec": "Devourer",
         "offSpec": null
       },
       "alt": {
