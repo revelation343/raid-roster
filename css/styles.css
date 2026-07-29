@@ -175,76 +175,133 @@ main { padding: clamp(1.1rem, 3vw, 2rem) clamp(1rem, 4vw, 2.75rem) 3rem; }
 
 /* -------------------------------------------------------------- roster */
 
-.scroller { overflow-x: auto; border: 1px solid var(--rule); background: var(--panel); }
+.ghost.primary { color: var(--gold); border-color: var(--gold-dim); }
+.ghost.primary:hover { background: rgba(200,165,87,.1); }
+.ghost.danger:hover { color: var(--alarm); border-color: var(--alarm); }
 
-table.roster { border-collapse: collapse; width: 100%; min-width: 1000px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: .85rem;
+}
 
-table.roster thead th {
-  position: sticky; top: 0; z-index: 2;
-  background: var(--panel-2);
-  border-bottom: 1px solid var(--rule);
-  font: 500 .68rem/1 'Cinzel', serif;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: left;
-  padding: .8rem .6rem;
+.card {
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--klass);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: border-color .18s ease, transform .18s ease;
+  animation: rise .35s cubic-bezier(.2,.7,.3,1) both;
+}
+.card:hover { transform: translateY(-2px); }
+.card:focus-within { border-color: var(--gold-dim); border-top-color: var(--klass); }
+.card.bench { opacity: .62; }
+.card.out { opacity: .34; }
+.card.unfinished { border-left: 2px solid var(--warn); }
+
+.card > header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: .5rem;
+  align-items: center;
+  padding: .7rem .8rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+input.who {
+  background: none; border: none; padding: 0; width: 100%;
+  color: var(--klass, var(--parchment));
+  font: 600 1.02rem/1.2 'Barlow', sans-serif;
+  letter-spacing: .02em;
+}
+input.who:focus { outline: none; }
+input.who::placeholder { color: var(--faint); font-weight: 400; font-style: italic; }
+
+/* status: segmented, one click, no hidden menu */
+.seg { display: flex; border: 1px solid var(--rule); }
+.seg button {
+  background: none; border: none;
+  border-right: 1px solid var(--rule);
+  color: var(--faint);
+  font: 600 .62rem/1 'Barlow', sans-serif;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .42rem .55rem; cursor: pointer;
+  transition: color .15s ease, background .15s ease;
+}
+.seg button:last-child { border-right: none; }
+.seg button:hover { color: var(--parchment); }
+.seg button.on { background: var(--gold); color: var(--ink); }
+
+.loadout { padding: .65rem .8rem; }
+.loadout.alt {
+  background: rgba(0,0,0,.22);
+  border-top: 1px solid var(--rule-soft);
+}
+
+.loadout-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .5rem; margin-bottom: .45rem;
+}
+.loadout-head .tag {
+  font: 500 .62rem/1 'Cinzel', serif;
+  letter-spacing: .17em; text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.role {
+  font: 600 .64rem/1 'Barlow', sans-serif;
+  letter-spacing: .09em; text-transform: uppercase;
+  padding: .28rem .5rem;
+  border: 1px solid currentColor;
   white-space: nowrap;
 }
-table.roster thead th.group {
-  color: var(--gold-dim);
-  border-left: 1px solid var(--rule);
+.role[data-role='Tank']       { color: #7FA9D6; }
+.role[data-role='Healer']     { color: #7FC98A; }
+.role[data-role='Melee DPS']  { color: #E0A0A0; }
+.role[data-role='Ranged DPS'] { color: #D9BE7A; }
+.role[data-role='Augvoker']   { color: #B79AD6; }
+.role.none {
+  color: var(--faint); border-style: dashed; text-transform: none;
+  letter-spacing: .04em; font-weight: 400; font-style: italic;
 }
 
-table.roster tbody tr {
-  border-bottom: 1px solid var(--rule-soft);
-  transition: background .16s ease;
-}
-table.roster tbody tr:hover { background: var(--panel-2); }
-table.roster tbody tr.bench { opacity: .55; }
-table.roster tbody tr.out   { opacity: .3; }
+.picks { display: grid; gap: .3rem; }
 
-table.roster td { padding: .3rem .45rem; vertical-align: middle; }
-table.roster td.edge {
-  padding: 0; width: 3px;
-  background: var(--klass, var(--rule));
-  box-shadow: 0 0 12px -2px var(--klass, transparent);
-}
-table.roster td.sep { border-left: 1px solid var(--rule-soft); }
-
-.name-cell { display: flex; align-items: center; gap: .5rem; }
-.name-cell input { min-width: 9rem; }
-
-.flagged {
-  color: var(--warn); font-size: .95rem; cursor: help; line-height: 1;
-}
-
-input.cell, select.cell {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--parchment);
-  font: 400 .85rem/1 'Barlow', sans-serif;
-  padding: .38rem .4rem;
+select.pick {
   width: 100%;
-  transition: border-color .16s ease, background .16s ease;
+  background: var(--ink-2);
+  border: 1px solid var(--rule);
+  color: var(--parchment);
+  font: 500 .85rem/1 'Barlow', sans-serif;
+  padding: .46rem .5rem;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease;
 }
-input.cell:hover, select.cell:hover { border-color: var(--rule); }
-input.cell:focus, select.cell:focus {
-  outline: none; border-color: var(--gold-dim); background: var(--ink-2);
-}
-select.cell:disabled { color: var(--faint); }
-select.cell option { background: var(--panel-2); color: var(--parchment); }
+select.pick:hover:not(:disabled) { border-color: var(--gold-dim); }
+select.pick:focus { outline: none; border-color: var(--gold); }
+select.pick.unset { color: var(--faint); font-style: italic; font-weight: 400; }
+select.pick:disabled { opacity: .4; cursor: not-allowed; }
+select.pick option { background: var(--panel-2); color: var(--parchment); font-style: normal; }
+select.pick.klass { color: var(--klass, var(--parchment)); font-weight: 600; }
+select.pick.klass.unset { color: var(--faint); font-weight: 400; }
 
-select.klass { font-weight: 600; color: var(--klass, var(--parchment)); }
-
-select.status-sel {
-  font: 600 .68rem/1 'Barlow', sans-serif;
-  letter-spacing: .1em; text-transform: uppercase;
+input.note {
+  background: none;
+  border: none;
+  border-top: 1px solid var(--rule-soft);
+  color: var(--muted);
+  font: italic 400 .8rem/1.3 'Barlow', sans-serif;
+  padding: .55rem .8rem;
+  margin-top: auto;
 }
+input.note:focus { outline: none; color: var(--parchment); background: var(--ink-2); }
+input.note::placeholder { color: var(--faint); font-style: normal; }
 
 .kill {
   background: none; border: 1px solid transparent; color: var(--faint);
-  font-size: 1rem; line-height: 1; padding: .25rem .45rem; cursor: pointer;
+  font-size: 1.05rem; line-height: 1; padding: .2rem .4rem; cursor: pointer;
   transition: color .16s ease, border-color .16s ease;
 }
 .kill:hover { color: var(--alarm); border-color: var(--alarm); }

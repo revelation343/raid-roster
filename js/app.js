@@ -86,28 +86,44 @@ function setStatus(text, kind = '') {
   el('status').className = `status ${kind}`;
 }
 
-function render() {
+// Everything that does not own the roster DOM. Safe to call while the user is
+// mid-keystroke in a text field — rebuilding the cards would steal focus.
+function repaintChrome() {
   const d = computeAll(state.roster);
 
   el('title').textContent = state.roster.title || 'Raid Roster';
-  const bits = [`<b>${d.totals.lockedIn}</b> locked in`];
+  const bits = [`<b>${d.totals.lockedIn}</b> signed up`];
   if (d.totals.bench) bits.push(`<b>${d.totals.bench}</b> benched`);
   if (d.incomplete.length) bits.push(`<span class="flag">${d.incomplete.length} without a spec</span>`);
   el('subtitle').innerHTML = bits.join(' &middot; ');
 
-  renderRoster(el('tab-roster'), state.roster, {
-    filter: state.filter,
-    onChange: () => { state.dirty = true; render(); },
-    onFilter: v => { state.filter = v; render(); },
-  });
   renderCoverage(el('tab-coverage'), d);
 
   const canSave = Boolean(state.sha) && !WORKER.includes('PLACEHOLDER');
   el('save').disabled = !state.dirty || !canSave;
-  el('save').title = canSave ? '' : 'Saving is not wired up yet — the save endpoint has not been deployed.';
-  if (state.dirty && WORKER.includes('PLACEHOLDER')) setStatus('read-only — save endpoint not deployed', 'err');
-  else if (state.dirty && !state.sha) setStatus('offline — cannot save', 'err');
-  else if (state.dirty) setStatus('unsaved changes');
+  el('save').title = canSave
+    ? '' : 'Saving is not wired up yet — the save endpoint has not been deployed.';
+
+  if (state.dirty && WORKER.includes('PLACEHOLDER')) {
+    setStatus('read-only — save endpoint not deployed', 'err');
+  } else if (state.dirty && !state.sha) {
+    setStatus('offline — cannot save', 'err');
+  } else if (state.dirty) {
+    setStatus('unsaved changes');
+  }
+  return d;
+}
+
+function render() {
+  repaintChrome();
+  renderRoster(el('tab-roster'), state.roster, {
+    filter: state.filter,
+    // Text typing: update data and chrome only, leave the cards alone.
+    onChange: () => { state.dirty = true; repaintChrome(); },
+    // Class/spec/status/add/remove: the cards themselves have to change.
+    onStructural: () => { state.dirty = true; render(); },
+    onFilter: v => { state.filter = v; render(); },
+  });
 }
 
 /* --------------------------------------------------------------- save */
