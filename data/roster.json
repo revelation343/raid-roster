@@ -7,7 +7,7 @@
       "name": "Silence",
       "main": {
         "class": "Warrior",
-        "spec": null,
+        "spec": "Protection",
         "offSpec": null
       },
       "alt": {
