@@ -3,22 +3,6 @@
   "title": "Echoes of the Infinite — Midnight",
   "players": [
     {
-      "id": "silence",
-      "name": "Silence",
-      "main": {
-        "class": "Paladin",
-        "spec": "Retribution",
-        "offSpec": "Protection"
-      },
-      "alt": {
-        "class": "Warrior",
-        "spec": "Fury",
-        "offSpec": "Protection"
-      },
-      "note": "Fuck portals. I am the light.",
-      "status": "locked"
-    },
-    {
       "id": "bwinks",
       "name": "Bwinks",
       "main": {
