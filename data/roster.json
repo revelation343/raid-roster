@@ -38,7 +38,7 @@
       "id": "pms6gt6j46057",
       "name": "Pandacookies",
       "main": {
-        "class": null,
+        "class": "Mage",
         "spec": null,
         "offSpec": null
       },
