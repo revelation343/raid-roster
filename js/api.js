@@ -7,20 +7,33 @@ export const WORKER = 'https://raid-roster.genesiswurm.workers.dev';
 const PATH = 'data/roster.json';
 const API = `https://api.github.com/repos/${REPO}/contents/${PATH}`;
 
+/**
+ * Content and SHA MUST come from the same read.
+ *
+ * GitHub Pages serves a cached build that lags commits by minutes, while the
+ * API is instant. Reading content from Pages and the SHA from the API lets a
+ * second person load stale content with a fresh SHA, save, and silently revert
+ * somebody else's change — passing the very staleness check meant to stop it.
+ *
+ * One API call returns both, so they can never disagree. Pages is only a
+ * fallback for when the API is unreachable, and that path is read-only.
+ */
 export async function loadRoster() {
+  try {
+    const res = await fetch(`${API}?ts=${Date.now()}`, {
+      headers: { Accept: 'application/vnd.github+json' },
+      cache: 'no-store',
+    });
+    if (res.ok) {
+      const body = await res.json();
+      const json = decodeURIComponent(escape(atob(body.content.replace(/\s/g, ''))));
+      return { roster: JSON.parse(json), sha: body.sha };
+    }
+  } catch { /* fall through to the read-only path */ }
+
   const res = await fetch(`data/roster.json?t=${Date.now()}`, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Could not load roster (${res.status})`);
-  return res.json();
-}
-
-export async function currentSha() {
-  try {
-    const res = await fetch(API, { headers: { Accept: 'application/vnd.github+json' } });
-    if (!res.ok) return null;
-    return (await res.json()).sha;
-  } catch {
-    return null;
-  }
+  return { roster: await res.json(), sha: null };
 }
 
 export async function saveRoster({ roster, sha, actor, summary, details, passphrase }) {

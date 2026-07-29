@@ -1,4 +1,4 @@
-import { loadRoster, currentSha, saveRoster, WORKER } from './api.js';
+import { loadRoster, saveRoster, WORKER } from './api.js';
 import { computeAll } from './compute.js';
 import { renderRoster } from './roster-ui.js';
 import { renderCoverage } from './coverage-ui.js';
@@ -201,11 +201,12 @@ for (const btn of document.querySelectorAll('.tabs button')) {
 (async () => {
   paintWhoami();
   try {
-    state.roster = await loadRoster();
-    pristine = structuredClone(state.roster);
-    state.sha = await currentSha();
+    const { roster, sha } = await loadRoster();
+    state.roster = roster;
+    state.sha = sha;
+    pristine = structuredClone(roster);
     render();
-    if (!state.sha) setStatus('read-only — could not reach GitHub');
+    if (!sha) setStatus('read-only — could not reach GitHub');
   } catch (e) {
     el('tab-roster').innerHTML = `<p class="empty">${e.message}</p>`;
     setStatus('failed to load', 'err');
