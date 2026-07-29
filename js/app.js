@@ -128,6 +128,10 @@ async function flush() {
       // Somebody else committed between our read and our write. Merge and retry.
       setStatus('merging someone else’s change…');
       const fresh = await loadRoster();
+      // Adopt their state as the new baseline BEFORE layering our edits on top,
+      // so the commit message describes only what this browser actually changed.
+      // Diffing against the pre-merge baseline would attribute their edits to us.
+      base = structuredClone(fresh.roster);
       state.roster = reapply(fresh.roster);
       state.sha = fresh.sha;
       render();
