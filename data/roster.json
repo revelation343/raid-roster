@@ -39,11 +39,11 @@
       "name": "Pandacookies",
       "main": {
         "class": "Mage",
-        "spec": null,
+        "spec": "Arcane",
         "offSpec": null
       },
       "alt": {
-        "class": null,
+        "class": "Druid",
         "spec": null,
         "offSpec": null
       },
