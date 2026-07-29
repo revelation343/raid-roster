@@ -17,6 +17,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pms6e95721228",
+      "name": "Candescent",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
