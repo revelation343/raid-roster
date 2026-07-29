@@ -8,10 +8,10 @@
       "main": {
         "class": "Warrior",
         "spec": "Protection",
-        "offSpec": null
+        "offSpec": "Arms"
       },
       "alt": {
-        "class": null,
+        "class": "Death Knight",
         "spec": null,
         "offSpec": null
       },
