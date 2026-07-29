@@ -5,6 +5,5 @@ compatibility_date = "2026-07-01"
 [vars]
 ALLOWED_ORIGIN = "https://revelation343.github.io"
 
-# Secrets — never in this file:
+# Secret — never in this file:
 #   npx wrangler secret put GITHUB_TOKEN
-#   npx wrangler secret put GUILD_PASSPHRASE

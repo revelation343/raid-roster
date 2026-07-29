@@ -38,27 +38,32 @@ See [`docs/spec.md`](docs/spec.md) for the full reference tables and
 
 Live at **https://revelation343.github.io/raid-roster/**
 
-Anyone with the link can edit. On the first save the browser asks for a name (shown
-against every change you make) and the guild passphrase. Both are remembered.
+Open the link, put your name in the "Signing as" box once, and edit your card. There
+is no sign-up, no password and no Save button — every change writes itself about a
+second after you stop fiddling, and the plate flashes gold when it lands.
 
-Every save is a commit to `data/roster.json`, so the History tab is the real change
-log — who, what, when, and a one-click restore of any earlier version.
+Two people editing at once is fine. Edits are scoped to a single player, so if somebody
+commits while you are typing, your change is merged onto theirs and retried. Neither of
+you loses anything.
 
-Nothing is destructive. "Clear roster" wipes the board for a new tier; the previous
-roster is still one click away in History.
+Nothing in the interface is destructive. Removing one player takes an inline
+confirmation and stays in the history forever; there is no way to wipe the board.
 
 ### Operating it
 
 The save endpoint is a Cloudflare Worker (`worker/`) holding a GitHub token scoped to
-this repo alone. To change the passphrase:
+this repository alone. It accepts only payloads that are structurally valid rosters, so
+it cannot be used to write arbitrary content, and it rate-limits bursts.
 
-```bash
-cd worker && npx wrangler secret put GUILD_PASSPHRASE
-```
-
-To rotate the GitHub token, mint a new fine-grained one (this repo only,
-Contents: Read and write) and:
+To rotate the token, mint a new fine-grained one (this repo only, Contents: Read and
+write) and:
 
 ```bash
 cd worker && npx wrangler secret put GITHUB_TOKEN
+```
+
+To clear the roster for a new tier:
+
+```bash
+gh api -X PUT repos/revelation343/raid-roster/contents/data/roster.json   -f message="new tier — roster cleared"   -f content="$(printf '{"version":1,"title":"Raid Roster","players":[]}' | base64 -w0)"   -f sha="$(gh api repos/revelation343/raid-roster/contents/data/roster.json --jq .sha)"
 ```

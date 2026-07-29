@@ -19,12 +19,31 @@ function reply(obj, status, origin) {
   });
 }
 
-// Constant-time-ish comparison so the passphrase can't be probed by timing.
-function sameSecret(a, b) {
-  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  return diff === 0;
+/**
+ * No passphrase, by design: this is an open signup sheet and a door code is
+ * friction for the people it is meant to serve. What protects it instead:
+ *
+ *   - the payload must be a structurally valid roster (validate.js), so the
+ *     endpoint cannot be used to write arbitrary content to the repo;
+ *   - the token is scoped to one file in one repo;
+ *   - every write is a commit, so anything unwanted is one revert away;
+ *   - the burst limit below stops the endpoint being used as a commit firehose.
+ */
+const RECENT = new Map();
+const WINDOW_MS = 60_000;
+const MAX_PER_WINDOW = 20;
+
+function overRate(ip) {
+  const now = Date.now();
+  for (const [key, times] of RECENT) {
+    const live = times.filter(t => now - t < WINDOW_MS);
+    if (live.length) RECENT.set(key, live); else RECENT.delete(key);
+  }
+  const mine = RECENT.get(ip) || [];
+  if (mine.length >= MAX_PER_WINDOW) return true;
+  mine.push(now);
+  RECENT.set(ip, mine);
+  return false;
 }
 
 const utf8ToBase64 = str => {
@@ -41,15 +60,14 @@ export default {
     if (request.method === 'OPTIONS') return reply({}, 204, origin);
     if (request.method !== 'POST') return reply({ error: 'POST only' }, 405, origin);
 
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    if (overRate(ip)) return reply({ error: 'too many saves — slow down' }, 429, origin);
+
     let body;
     try { body = await request.json(); }
     catch { return reply({ error: 'malformed JSON' }, 400, origin); }
 
-    const { roster, sha, actor, summary, details, passphrase } = body || {};
-
-    if (!sameSecret(passphrase, env.GUILD_PASSPHRASE)) {
-      return reply({ error: 'bad passphrase' }, 401, origin);
-    }
+    const { roster, sha, actor, summary, details } = body || {};
 
     const invalid = validateRoster(roster);
     if (invalid) return reply({ error: invalid }, 400, origin);
