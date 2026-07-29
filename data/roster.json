@@ -44,8 +44,8 @@
       },
       "alt": {
         "class": "Druid",
-        "spec": null,
-        "offSpec": null
+        "spec": "Balance",
+        "offSpec": "Guardian"
       },
       "note": "",
       "status": "locked"
