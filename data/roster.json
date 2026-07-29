@@ -67,22 +67,6 @@
       "status": "locked"
     },
     {
-      "id": "gill-grunt",
-      "name": "Gill Grunt",
-      "main": {
-        "class": "Monk",
-        "spec": "Brewmaster",
-        "offSpec": null
-      },
-      "alt": {
-        "class": "Demon Hunter",
-        "spec": "Vengeance",
-        "offSpec": "Devourer"
-      },
-      "note": "I dont like the guy below me",
-      "status": "locked"
-    },
-    {
       "id": "emilios",
       "name": "Emilios",
       "main": {
