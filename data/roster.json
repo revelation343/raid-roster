@@ -108,7 +108,7 @@
       },
       "alt": {
         "class": "Evoker",
-        "spec": null,
+        "spec": "Augmentation",
         "offSpec": null
       },
       "note": "",
