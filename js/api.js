@@ -3,7 +3,7 @@
 // If the SHA cannot be fetched, viewing still works and saving is disabled.
 
 export const REPO = 'revelation343/raid-roster';
-export const WORKER = 'https://raid-roster.PLACEHOLDER.workers.dev';
+export const WORKER = 'https://raid-roster.genesiswurm.workers.dev';
 const PATH = 'data/roster.json';
 const API = `https://api.github.com/repos/${REPO}/contents/${PATH}`;
 
