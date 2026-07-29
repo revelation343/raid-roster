@@ -134,8 +134,8 @@
       "id": "pms6mduuf6083",
       "name": "Keyi",
       "main": {
-        "class": null,
-        "spec": null,
+        "class": "Monk",
+        "spec": "Mistweaver",
         "offSpec": null
       },
       "alt": {
