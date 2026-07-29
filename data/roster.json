@@ -113,6 +113,22 @@
       },
       "note": "Best rogue NA",
       "status": "locked"
+    },
+    {
+      "id": "pms6m4x0q9820",
+      "name": "Ándres",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
