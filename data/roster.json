@@ -118,8 +118,8 @@
       "id": "pms6m4x0q9820",
       "name": "Ándres",
       "main": {
-        "class": null,
-        "spec": null,
+        "class": "Paladin",
+        "spec": "Retribution",
         "offSpec": null
       },
       "alt": {
