@@ -34,15 +34,31 @@ asserts roles + incomplete = locked-in, so that can't recur silently.
 See [`docs/spec.md`](docs/spec.md) for the full reference tables and
 [`docs/plan.md`](docs/plan.md) for the build.
 
-## Save endpoint
+## Saving
 
-The site is read-only until the Cloudflare Worker in [`worker/`](worker) is deployed:
+Live at **https://revelation343.github.io/raid-roster/**
+
+Anyone with the link can edit. On the first save the browser asks for a name (shown
+against every change you make) and the guild passphrase. Both are remembered.
+
+Every save is a commit to `data/roster.json`, so the History tab is the real change
+log — who, what, when, and a one-click restore of any earlier version.
+
+Nothing is destructive. "Clear roster" wipes the board for a new tier; the previous
+roster is still one click away in History.
+
+### Operating it
+
+The save endpoint is a Cloudflare Worker (`worker/`) holding a GitHub token scoped to
+this repo alone. To change the passphrase:
 
 ```bash
-cd worker
-npx wrangler deploy
-npx wrangler secret put GITHUB_TOKEN      # fine-grained, this repo only, Contents: RW
-npx wrangler secret put GUILD_PASSPHRASE
+cd worker && npx wrangler secret put GUILD_PASSPHRASE
 ```
 
-Then replace `PLACEHOLDER` in `js/api.js` with the deployed subdomain.
+To rotate the GitHub token, mint a new fine-grained one (this repo only,
+Contents: Read and write) and:
+
+```bash
+cd worker && npx wrangler secret put GITHUB_TOKEN
+```
