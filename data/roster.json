@@ -3,20 +3,20 @@
   "title": "Echoes of the Infinite — Midnight",
   "players": [
     {
-      "id": "bronwinn",
-      "name": "Bronwinn",
+      "id": "pms6e74lw7527",
+      "name": "Silence",
       "main": {
-        "class": "Paladin",
-        "spec": "Retribution",
+        "class": null,
+        "spec": null,
         "offSpec": null
       },
       "alt": {
-        "class": "Demon Hunter",
-        "spec": "Devourer",
-        "offSpec": "Havoc"
+        "class": null,
+        "spec": null,
+        "offSpec": null
       },
       "note": "",
-      "status": "bench"
+      "status": "locked"
     }
   ]
 }
