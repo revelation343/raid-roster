@@ -176,7 +176,7 @@
         "offSpec": null
       },
       "note": "",
-      "status": "bench"
+      "status": "locked"
     },
     {
       "id": "pms6wxjub9409",
@@ -188,6 +188,22 @@
       },
       "alt": {
         "class": "Rogue",
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
+    },
+    {
+      "id": "pms7hul4n1635",
+      "name": "doodoo",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
         "spec": null,
         "offSpec": null
       },
