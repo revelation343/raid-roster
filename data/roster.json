@@ -167,7 +167,7 @@
       "name": "Bayeux",
       "main": {
         "class": "Priest",
-        "spec": null,
+        "spec": "Discipline",
         "offSpec": null
       },
       "alt": {
