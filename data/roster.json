@@ -198,7 +198,7 @@
       "id": "pms7hul4n1635",
       "name": "doodoo",
       "main": {
-        "class": null,
+        "class": "Hunter",
         "spec": null,
         "offSpec": null
       },
