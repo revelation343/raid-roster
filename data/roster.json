@@ -214,7 +214,7 @@
       "id": "pms7y0y0v8074",
       "name": "Gobanks",
       "main": {
-        "class": null,
+        "class": "Paladin",
         "spec": null,
         "offSpec": null
       },
