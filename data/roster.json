@@ -216,7 +216,7 @@
       "main": {
         "class": "Paladin",
         "spec": "Protection",
-        "offSpec": null
+        "offSpec": "Retribution"
       },
       "alt": {
         "class": null,
