@@ -183,11 +183,11 @@
       "name": "Guber",
       "main": {
         "class": "Shaman",
-        "spec": null,
+        "spec": "Elemental",
         "offSpec": null
       },
       "alt": {
-        "class": null,
+        "class": "Rogue",
         "spec": null,
         "offSpec": null
       },
