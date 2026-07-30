@@ -166,7 +166,7 @@
       "id": "pms6wb4kb896",
       "name": "Bayeux",
       "main": {
-        "class": null,
+        "class": "Priest",
         "spec": null,
         "offSpec": null
       },
