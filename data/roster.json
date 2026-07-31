@@ -247,7 +247,7 @@
       "name": "Barrymanilow",
       "main": {
         "class": "Paladin",
-        "spec": null,
+        "spec": "Retribution",
         "offSpec": null
       },
       "alt": {
