@@ -294,7 +294,7 @@
       "id": "pms9bmvu35904",
       "name": "BigWill",
       "main": {
-        "class": null,
+        "class": "Mage",
         "spec": null,
         "offSpec": null
       },
