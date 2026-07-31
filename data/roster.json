@@ -285,7 +285,7 @@
       "alt": {
         "class": "Hunter",
         "spec": "Beast Mastery",
-        "offSpec": null
+        "offSpec": "Marksmanship"
       },
       "note": "",
       "status": "locked"
