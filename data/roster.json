@@ -269,7 +269,7 @@
       "alt": {
         "class": "Warlock",
         "spec": "Demonology",
-        "offSpec": null
+        "offSpec": "Destruction"
       },
       "note": "",
       "status": "locked"
