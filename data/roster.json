@@ -225,22 +225,6 @@
       },
       "note": "",
       "status": "locked"
-    },
-    {
-      "id": "pms89q58i5061",
-      "name": "Soulofsinder",
-      "main": {
-        "class": "Warlock",
-        "spec": "Demonology",
-        "offSpec": "Destruction"
-      },
-      "alt": {
-        "class": "Death Knight",
-        "spec": "Unholy",
-        "offSpec": "Blood"
-      },
-      "note": "Lanstan and Duber's friend. Willing to play anywhere that is needed",
-      "status": "locked"
     }
   ]
 }
