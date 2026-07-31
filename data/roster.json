@@ -231,7 +231,7 @@
       "name": "Jarethor",
       "main": {
         "class": "Warlock",
-        "spec": null,
+        "spec": "Demonology",
         "offSpec": null
       },
       "alt": {
