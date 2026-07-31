@@ -70,9 +70,9 @@
       "id": "pms6hzgwc7954",
       "name": "Lump",
       "main": {
-        "class": "Demon Hunter",
-        "spec": "Devourer",
-        "offSpec": "Vengeance"
+        "class": "Evoker",
+        "spec": null,
+        "offSpec": null
       },
       "alt": {
         "class": "Druid",
