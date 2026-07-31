@@ -262,12 +262,12 @@
       "id": "pms9883uy2694",
       "name": "Mortal",
       "main": {
-        "class": null,
+        "class": "Demon Hunter",
         "spec": null,
         "offSpec": null
       },
       "alt": {
-        "class": null,
+        "class": "Warlock",
         "spec": null,
         "offSpec": null
       },
