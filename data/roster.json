@@ -237,9 +237,9 @@
       "alt": {
         "class": "Warlock",
         "spec": "Demonology",
-        "offSpec": null
+        "offSpec": "Destruction"
       },
-      "note": "",
+      "note": "Lanstan and Duber's Friend",
       "status": "locked"
     }
   ]
