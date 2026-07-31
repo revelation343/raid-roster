@@ -8,7 +8,7 @@
       "main": {
         "class": "Warrior",
         "spec": "Protection",
-        "offSpec": "Arms"
+        "offSpec": "Protection"
       },
       "alt": {
         "class": "Death Knight",
