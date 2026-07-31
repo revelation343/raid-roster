@@ -230,8 +230,8 @@
       "id": "pms8bhga45017",
       "name": "Jarethor",
       "main": {
-        "class": null,
-        "spec": null,
+        "class": "Death Knight",
+        "spec": "Unholy",
         "offSpec": null
       },
       "alt": {
