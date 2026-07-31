@@ -232,12 +232,12 @@
       "main": {
         "class": "Warlock",
         "spec": "Demonology",
-        "offSpec": null
+        "offSpec": "Destruction"
       },
       "alt": {
-        "class": "Warlock",
-        "spec": "Demonology",
-        "offSpec": "Destruction"
+        "class": "Death Knight",
+        "spec": null,
+        "offSpec": null
       },
       "note": "Lanstan and Duber's Friend",
       "status": "locked"
