@@ -241,6 +241,22 @@
       },
       "note": "Lanstan and Duber's Friend",
       "status": "locked"
+    },
+    {
+      "id": "pms8e1gd14003",
+      "name": "Barrymanilow",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
