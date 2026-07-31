@@ -225,6 +225,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pms8bhga45017",
+      "name": "Jarethor",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
