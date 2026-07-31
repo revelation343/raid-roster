@@ -237,7 +237,7 @@
       "alt": {
         "class": "Death Knight",
         "spec": "Blood",
-        "offSpec": null
+        "offSpec": "Unholy"
       },
       "note": "",
       "status": "locked"
