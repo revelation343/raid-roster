@@ -257,6 +257,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pms9883uy2694",
+      "name": "Mortal",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
