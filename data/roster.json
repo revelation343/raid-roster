@@ -232,10 +232,10 @@
       "main": {
         "class": "Death Knight",
         "spec": "Unholy",
-        "offSpec": null
+        "offSpec": "Blood"
       },
       "alt": {
-        "class": null,
+        "class": "Warlock",
         "spec": null,
         "offSpec": null
       },
