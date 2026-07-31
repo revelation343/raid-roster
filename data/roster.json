@@ -71,8 +71,8 @@
       "name": "Lump",
       "main": {
         "class": "Evoker",
-        "spec": "Devastation",
-        "offSpec": "Augmentation"
+        "spec": "Augmentation",
+        "offSpec": "Devastation"
       },
       "alt": {
         "class": "Druid",
