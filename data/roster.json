@@ -263,7 +263,7 @@
       "name": "Mortal",
       "main": {
         "class": "Demon Hunter",
-        "spec": null,
+        "spec": "Devourer",
         "offSpec": null
       },
       "alt": {
