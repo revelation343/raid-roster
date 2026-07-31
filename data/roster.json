@@ -279,7 +279,7 @@
       "name": "Biefcake",
       "main": {
         "class": "Death Knight",
-        "spec": null,
+        "spec": "Unholy",
         "offSpec": null
       },
       "alt": {
