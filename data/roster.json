@@ -295,7 +295,7 @@
       "name": "BigWill",
       "main": {
         "class": "Mage",
-        "spec": null,
+        "spec": "Frost",
         "offSpec": null
       },
       "alt": {
