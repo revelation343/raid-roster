@@ -189,7 +189,7 @@
       "alt": {
         "class": "Rogue",
         "spec": "Assassination",
-        "offSpec": null
+        "offSpec": "Subtlety"
       },
       "note": "",
       "status": "locked"
