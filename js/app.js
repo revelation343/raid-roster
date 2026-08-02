@@ -171,7 +171,19 @@ function repaintChrome() {
     bits.push(`<span class="flag">${d.incomplete.length} without a spec</span>`);
   }
   el('subtitle').innerHTML = bits.join(' &middot; ');
-  renderCoverage(el('tab-coverage'), d);
+  renderCoverage(el('tab-coverage'), d, revealPlayer);
+}
+
+/** Coverage chip clicked: jump to that player's plate on the roster. */
+function revealPlayer(c) {
+  state.filter = c.name;
+  render();
+  document.querySelector('.tabs button[data-tab="roster"]').click();
+  const plate = el('tab-roster').querySelector(`.plate[data-id="${CSS.escape(c.id)}"]`);
+  if (!plate) return;
+  plate.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  plate.classList.add('pinged');
+  setTimeout(() => plate.classList.remove('pinged'), 1400);
 }
 
 function render() {
