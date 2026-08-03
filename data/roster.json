@@ -72,7 +72,7 @@
       "main": {
         "class": "Evoker",
         "spec": "Augmentation",
-        "offSpec": "Devastation"
+        "offSpec": "Preservation"
       },
       "alt": {
         "class": "Druid",
