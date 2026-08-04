@@ -107,9 +107,9 @@
         "offSpec": "Subtlety"
       },
       "alt": {
-        "class": "Evoker",
-        "spec": "Augmentation",
-        "offSpec": "Preservation"
+        "class": "Death Knight",
+        "spec": null,
+        "offSpec": null
       },
       "note": "Best rogue NA",
       "status": "locked"
