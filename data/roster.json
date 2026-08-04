@@ -93,7 +93,7 @@
       "alt": {
         "class": "Evoker",
         "spec": "Preservation",
-        "offSpec": null
+        "offSpec": "Augmentation"
       },
       "note": "",
       "status": "locked"
