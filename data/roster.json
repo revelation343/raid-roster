@@ -108,8 +108,8 @@
       },
       "alt": {
         "class": "Death Knight",
-        "spec": null,
-        "offSpec": null
+        "spec": "Blood",
+        "offSpec": "Frost"
       },
       "note": "Best rogue NA",
       "status": "locked"
