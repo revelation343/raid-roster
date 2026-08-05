@@ -311,7 +311,7 @@
       "name": "Dottingway",
       "main": {
         "class": "Warlock",
-        "spec": null,
+        "spec": "Affliction",
         "offSpec": null
       },
       "alt": {
@@ -319,7 +319,7 @@
         "spec": null,
         "offSpec": null
       },
-      "note": "",
+      "note": "All the alts",
       "status": "locked"
     }
   ]
