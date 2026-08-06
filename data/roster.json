@@ -230,9 +230,9 @@
       "id": "pms8bhga45017",
       "name": "Jarethor",
       "main": {
-        "class": "Warlock",
-        "spec": "Demonology",
-        "offSpec": "Destruction"
+        "class": "Death Knight",
+        "spec": null,
+        "offSpec": null
       },
       "alt": {
         "class": "Death Knight",
