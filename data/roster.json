@@ -102,14 +102,14 @@
       "id": "pms6lte2l4589",
       "name": "Ninjini",
       "main": {
-        "class": "Rogue",
-        "spec": "Assassination",
-        "offSpec": "Subtlety"
+        "class": "Warlock",
+        "spec": null,
+        "offSpec": null
       },
       "alt": {
         "class": "Death Knight",
         "spec": "Frost",
-        "offSpec": "Frost"
+        "offSpec": "Blood"
       },
       "note": "Best rogue NA",
       "status": "locked"
