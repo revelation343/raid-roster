@@ -232,7 +232,7 @@
       "main": {
         "class": "Warlock",
         "spec": "Destruction",
-        "offSpec": null
+        "offSpec": "Demonology"
       },
       "alt": {
         "class": "Warlock",
