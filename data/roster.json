@@ -103,7 +103,7 @@
       "name": "Ninjini",
       "main": {
         "class": "Warlock",
-        "spec": null,
+        "spec": "Affliction",
         "offSpec": null
       },
       "alt": {
