@@ -231,7 +231,7 @@
       "name": "Soulofsinder",
       "main": {
         "class": "Death Knight",
-        "spec": null,
+        "spec": "Frost",
         "offSpec": null
       },
       "alt": {
