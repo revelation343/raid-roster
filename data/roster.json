@@ -231,7 +231,7 @@
       "name": "Soulofsinder",
       "main": {
         "class": "Warlock",
-        "spec": null,
+        "spec": "Destruction",
         "offSpec": null
       },
       "alt": {
