@@ -230,8 +230,8 @@
       "id": "pms8bhga45017",
       "name": "Soulofsinder",
       "main": {
-        "class": "Death Knight",
-        "spec": "Frost",
+        "class": "Warlock",
+        "spec": null,
         "offSpec": null
       },
       "alt": {
