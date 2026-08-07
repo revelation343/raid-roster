@@ -187,9 +187,9 @@
         "offSpec": "Subtlety"
       },
       "alt": {
-        "class": "Rogue",
-        "spec": "Assassination",
-        "offSpec": "Subtlety"
+        "class": "Shaman",
+        "spec": null,
+        "offSpec": null
       },
       "note": "",
       "status": "locked"
