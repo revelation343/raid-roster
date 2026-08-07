@@ -183,8 +183,8 @@
       "name": "Zuber",
       "main": {
         "class": "Rogue",
-        "spec": null,
-        "offSpec": null
+        "spec": "Assassination",
+        "offSpec": "Subtlety"
       },
       "alt": {
         "class": "Rogue",
