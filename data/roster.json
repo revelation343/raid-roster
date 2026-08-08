@@ -107,9 +107,9 @@
         "offSpec": "Subtlety"
       },
       "alt": {
-        "class": "Death Knight",
-        "spec": "Frost",
-        "offSpec": "Blood"
+        "class": "Monk",
+        "spec": "Windwalker",
+        "offSpec": null
       },
       "note": "Best rogue NA",
       "status": "locked"
