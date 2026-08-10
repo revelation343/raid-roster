@@ -321,6 +321,22 @@
       },
       "note": "All the alts",
       "status": "locked"
+    },
+    {
+      "id": "pmsntqbuu6960",
+      "name": "Remedio",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
