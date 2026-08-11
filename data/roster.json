@@ -342,7 +342,7 @@
       "id": "pmspboiu58451",
       "name": "Galind",
       "main": {
-        "class": null,
+        "class": "Mage",
         "spec": null,
         "offSpec": null
       },
