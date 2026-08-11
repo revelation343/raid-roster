@@ -343,7 +343,7 @@
       "name": "Galind",
       "main": {
         "class": "Mage",
-        "spec": null,
+        "spec": "Frost",
         "offSpec": null
       },
       "alt": {
