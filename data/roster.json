@@ -372,10 +372,10 @@
     },
     {
       "id": "pmsph5vsp5061",
-      "name": "Fajin",
+      "name": "Fajnn",
       "main": {
         "class": "Priest",
-        "spec": null,
+        "spec": "Shadow",
         "offSpec": null
       },
       "alt": {
