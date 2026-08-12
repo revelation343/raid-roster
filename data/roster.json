@@ -353,6 +353,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmsph2lyv6889",
+      "name": "Strongjaw",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
