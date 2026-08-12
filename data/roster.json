@@ -358,7 +358,7 @@
       "id": "pmsph2lyv6889",
       "name": "Strongjaw",
       "main": {
-        "class": null,
+        "class": "Warrior",
         "spec": null,
         "offSpec": null
       },
