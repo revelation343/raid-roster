@@ -360,7 +360,7 @@
       "main": {
         "class": "Warrior",
         "spec": "Arms",
-        "offSpec": null
+        "offSpec": "Protection"
       },
       "alt": {
         "class": null,
