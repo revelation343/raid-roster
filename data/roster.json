@@ -391,7 +391,7 @@
       "name": "Tea",
       "main": {
         "class": "Demon Hunter",
-        "spec": null,
+        "spec": "Havoc",
         "offSpec": null
       },
       "alt": {
