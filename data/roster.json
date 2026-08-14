@@ -364,8 +364,8 @@
       },
       "alt": {
         "class": "Death Knight",
-        "spec": null,
-        "offSpec": null
+        "spec": "Blood",
+        "offSpec": "Unholy"
       },
       "note": "",
       "status": "locked"
