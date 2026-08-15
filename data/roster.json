@@ -401,6 +401,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmsuxi8gx3129",
+      "name": "Meikora",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
