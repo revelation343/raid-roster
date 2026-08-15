@@ -407,7 +407,7 @@
       "name": "Meikora",
       "main": {
         "class": "Hunter",
-        "spec": null,
+        "spec": "Beast Mastery",
         "offSpec": null
       },
       "alt": {
