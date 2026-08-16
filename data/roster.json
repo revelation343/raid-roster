@@ -43,9 +43,9 @@
         "offSpec": "Restoration"
       },
       "alt": {
-        "class": "Druid",
-        "spec": "Balance",
-        "offSpec": "Guardian"
+        "class": "Mage",
+        "spec": null,
+        "offSpec": null
       },
       "note": "",
       "status": "locked"
