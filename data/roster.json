@@ -387,22 +387,6 @@
       "status": "locked"
     },
     {
-      "id": "pmstbz1gs9088",
-      "name": "Tea",
-      "main": {
-        "class": "Demon Hunter",
-        "spec": "Havoc",
-        "offSpec": null
-      },
-      "alt": {
-        "class": null,
-        "spec": null,
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
-    },
-    {
       "id": "pmsuxi8gx3129",
       "name": "Meikora",
       "main": {
