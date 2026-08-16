@@ -44,8 +44,8 @@
       },
       "alt": {
         "class": "Mage",
-        "spec": null,
-        "offSpec": null
+        "spec": "Arcane",
+        "offSpec": "Fire"
       },
       "note": "",
       "status": "locked"
