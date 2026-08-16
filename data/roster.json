@@ -39,8 +39,8 @@
       "name": "Pandacookies",
       "main": {
         "class": "Druid",
-        "spec": null,
-        "offSpec": null
+        "spec": "Balance",
+        "offSpec": "Restoration"
       },
       "alt": {
         "class": "Druid",
