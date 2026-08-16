@@ -71,7 +71,7 @@
       "name": "Lump",
       "main": {
         "class": "Evoker",
-        "spec": "Devastation",
+        "spec": "Augmentation",
         "offSpec": "Preservation"
       },
       "alt": {
