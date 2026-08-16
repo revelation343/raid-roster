@@ -38,9 +38,9 @@
       "id": "pms6gt6j46057",
       "name": "Pandacookies",
       "main": {
-        "class": "Mage",
-        "spec": "Arcane",
-        "offSpec": "Frost"
+        "class": "Druid",
+        "spec": null,
+        "offSpec": null
       },
       "alt": {
         "class": "Druid",
