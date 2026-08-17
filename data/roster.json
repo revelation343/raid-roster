@@ -438,7 +438,7 @@
       "id": "pmsxgeuzq4470",
       "name": "Dexavece",
       "main": {
-        "class": null,
+        "class": "Monk",
         "spec": null,
         "offSpec": null
       },
