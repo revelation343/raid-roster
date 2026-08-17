@@ -417,6 +417,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmswomlr05399",
+      "name": "Prizepatrol",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
