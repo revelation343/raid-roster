@@ -91,9 +91,9 @@
         "offSpec": "Balance"
       },
       "alt": {
-        "class": "Evoker",
-        "spec": "Preservation",
-        "offSpec": "Augmentation"
+        "class": null,
+        "spec": null,
+        "offSpec": null
       },
       "note": "",
       "status": "locked"
