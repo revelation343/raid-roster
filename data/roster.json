@@ -342,8 +342,8 @@
       "id": "pmspboiu58451",
       "name": "Everas",
       "main": {
-        "class": "Mage",
-        "spec": "Frost",
+        "class": "Paladin",
+        "spec": "Retribution",
         "offSpec": null
       },
       "alt": {
