@@ -439,7 +439,7 @@
       "name": "Nova",
       "main": {
         "class": "Mage",
-        "spec": null,
+        "spec": "Arcane",
         "offSpec": null
       },
       "alt": {
