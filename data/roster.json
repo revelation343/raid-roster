@@ -438,7 +438,7 @@
       "id": "pmt34evu42571",
       "name": "Nova",
       "main": {
-        "class": null,
+        "class": "Mage",
         "spec": null,
         "offSpec": null
       },
