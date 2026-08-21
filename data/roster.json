@@ -310,8 +310,8 @@
       "id": "pmsfr9wu93787",
       "name": "Dottingway",
       "main": {
-        "class": "Death Knight",
-        "spec": null,
+        "class": "Warlock",
+        "spec": "Affliction",
         "offSpec": null
       },
       "alt": {
