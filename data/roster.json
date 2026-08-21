@@ -433,6 +433,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmt34evu42571",
+      "name": "Nova",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
