@@ -433,22 +433,6 @@
       },
       "note": "",
       "status": "locked"
-    },
-    {
-      "id": "pmsxgeuzq4470",
-      "name": "Dexavece",
-      "main": {
-        "class": "Monk",
-        "spec": "Windwalker",
-        "offSpec": null
-      },
-      "alt": {
-        "class": null,
-        "spec": null,
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
     }
   ]
 }
