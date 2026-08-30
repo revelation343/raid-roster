@@ -455,7 +455,7 @@
       "name": "Dixinormous",
       "main": {
         "class": "Shaman",
-        "spec": null,
+        "spec": "Elemental",
         "offSpec": null
       },
       "alt": {
