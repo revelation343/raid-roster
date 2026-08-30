@@ -173,7 +173,7 @@
       "alt": {
         "class": "Paladin",
         "spec": "Protection",
-        "offSpec": null
+        "offSpec": "Holy"
       },
       "note": "",
       "status": "locked"
