@@ -455,7 +455,7 @@
       "name": "Bàmaman",
       "main": {
         "class": "Rogue",
-        "spec": null,
+        "spec": "Outlaw",
         "offSpec": null
       },
       "alt": {
