@@ -339,22 +339,6 @@
       "status": "locked"
     },
     {
-      "id": "pmspboiu58451",
-      "name": "Everas",
-      "main": {
-        "class": "Paladin",
-        "spec": "Retribution",
-        "offSpec": null
-      },
-      "alt": {
-        "class": "Hunter",
-        "spec": "Beast Mastery",
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
-    },
-    {
       "id": "pmsph2lyv6889",
       "name": "Strongjaw",
       "main": {
