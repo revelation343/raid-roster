@@ -1,4 +1,5 @@
 import { CLASS_COLORS } from './game-data.js';
+import { cut } from './ui.js';
 
 // Which rows are open survives a re-render, so editing the roster does not
 // collapse everything the raid leader had expanded.
@@ -58,15 +59,14 @@ function chipGroup(title, list, onPick) {
 function block(blockId, title, rows, opts = {}) {
   const { flagZero = false, colourByClass = false, onPick = null } = opts;
 
-  const wrap = document.createElement('section');
-  wrap.className = 'block';
+  const { el: wrap, body } = cut('section', 'block');
 
   const h = document.createElement('h2');
   h.textContent = title;
 
   const table = document.createElement('table');
   table.innerHTML = '<thead><tr><th></th><th>Main</th><th>Alt</th></tr></thead>';
-  const body = document.createElement('tbody');
+  const tbody = document.createElement('tbody');
 
   for (const r of rows) {
     const total = (r.mainWho?.length || 0) + (r.altWho?.length || 0);
@@ -124,7 +124,7 @@ function block(blockId, title, rows, opts = {}) {
     alt.textContent = r.alt === '' ? '' : r.alt;
 
     tr.append(labelCell, main, alt);
-    body.append(tr);
+    tbody.append(tr);
 
     if (expandable) {
       panel = document.createElement('tr');
@@ -138,12 +138,12 @@ function block(blockId, title, rows, opts = {}) {
       if (!r.hideAlt) inner.append(chipGroup('Off-spec / alt', r.altWho, onPick));
       cell.append(inner);
       panel.append(cell);
-      body.append(panel);
+      tbody.append(panel);
     }
   }
 
-  table.append(body);
-  wrap.append(h, table);
+  table.append(tbody);
+  body.append(h, table);
   return wrap;
 }
 
@@ -164,16 +164,17 @@ export function renderCoverage(root, d, onPick) {
   const find = label => d.roles.find(r => r.label === label);
   const roleSum = d.roles.reduce((a, r) => a + r.main, 0);
 
-  const summary = document.createElement('dl');
-  summary.className = 'summary';
-  summary.append(
+  const { el: summary, body: summaryBody } = cut('section', 'summary');
+  const dl = document.createElement('dl');
+  dl.append(
     stat('Signed up', d.totals.lockedIn),
     stat('Tanks', find('Tank').main),
     stat('Healers', find('Healer').main),
     stat('DPS', find('Melee DPS').main + find('Ranged DPS').main),
   );
-  if (d.totals.bench) summary.append(stat('Benched', d.totals.bench));
-  if (d.incomplete.length) summary.append(stat('No spec set', d.incomplete.length, true));
+  if (d.totals.bench) dl.append(stat('Benched', d.totals.bench));
+  if (d.incomplete.length) dl.append(stat('No spec set', d.incomplete.length, true));
+  summaryBody.append(dl);
 
   // ---- Raid Roles gains two derived rows
   const roles = d.roles.map(r => ({ ...r }));
@@ -202,12 +203,12 @@ export function renderCoverage(root, d, onPick) {
   const grid = document.createElement('div');
   grid.className = 'grid';
   grid.append(
-    block('roles', 'Raid Roles', roles, { onPick }),
-    block('buffs', 'Major Buffs & Debuffs', d.buffs, { flagZero: true, onPick }),
+    block('roles', 'Raid roles', roles, { onPick }),
+    block('buffs', 'Major buffs and debuffs', d.buffs, { flagZero: true, onPick }),
     block('utility', 'Utility', d.utility, { flagZero: true, onPick }),
     block('classes', 'Classes', d.classes, { colourByClass: true, onPick }),
-    block('tier', 'Tier Tokens', d.tierTokens, { onPick }),
-    block('cds', 'Cooldown Profiles', cds, { onPick }),
+    block('tier', 'Tier tokens', d.tierTokens, { onPick }),
+    block('cds', 'Cooldown profiles', cds, { onPick }),
   );
 
   const hint = document.createElement('p');

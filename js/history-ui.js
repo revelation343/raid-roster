@@ -1,4 +1,6 @@
 import { loadHistory, loadVersion } from './api.js';
+import { groupCommits } from './history.js';
+import { cut } from './ui.js';
 
 function relative(iso) {
   const then = new Date(iso);
@@ -9,10 +11,81 @@ function relative(iso) {
   if (hrs < 24) return `${hrs} hour${hrs === 1 ? '' : 's'} ago`;
   const days = Math.round(hrs / 24);
   if (days < 30) return `${days} day${days === 1 ? '' : 's'} ago`;
-  return then.toLocaleDateString();
+  return then.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
-export async function renderHistory(root, onRestore) {
+const when = d => d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+
+function restoreButton(g, onRestore) {
+  const restore = document.createElement('button');
+  restore.className = 'ghost restore';
+  restore.textContent = 'Restore';
+  restore.title = `Load the roster as it was after "${g.subject}"`;
+  restore.onclick = async () => {
+    if (!confirm(
+      `Restore the roster as it was after "${g.subject}"?\n\n` +
+      `It loads into the editor and saves like any other change.`)) return;
+    restore.disabled = true;
+    restore.textContent = 'Loading…';
+    try {
+      onRestore(await loadVersion(g.sha));
+    } catch (e) {
+      alert(e.message);
+      restore.disabled = false;
+      restore.textContent = 'Restore';
+    }
+  };
+  return restore;
+}
+
+/** A roster reset is a line across the log, not another card. */
+function turn(g, onRestore) {
+  const wrap = document.createElement('div');
+  wrap.className = 'turn';
+  const h = document.createElement('h3');
+  h.textContent = g.subject;
+  const p = document.createElement('p');
+  p.textContent = `${g.author || 'someone'} · ${when(g.to)}`;
+  wrap.append(h, p, restoreButton(g, onRestore));
+  return wrap;
+}
+
+function entry(g, i, onRestore, colourFor) {
+  const { el, body } = cut('article', 'group');
+  el.style.animationDelay = `${Math.min(i, 12) * 0.03}s`;
+
+  const hd = document.createElement('div');
+  hd.className = 'hd';
+  const actor = document.createElement('span');
+  actor.className = g.anon ? 'actor anon' : 'actor';
+  actor.textContent = g.anon ? 'someone' : g.actor;
+  const time = document.createElement('time');
+  time.dateTime = g.to.toISOString();
+  time.textContent = relative(g.to) + (g.count > 1 ? ` · ${g.count} edits` : '');
+  time.title = g.count > 1 ? `${when(g.from)} – ${when(g.to)}` : when(g.to);
+  hd.append(actor, time);
+
+  const ul = document.createElement('ul');
+  const lines = g.lines.length ? g.lines : [{ name: null, text: g.subject }];
+  for (const l of lines.slice(0, 20)) {
+    const li = document.createElement('li');
+    if (l.name) {
+      const b = document.createElement('b');
+      b.textContent = l.name;
+      const colour = colourFor(l.name);
+      if (colour) b.style.setProperty('--nm', colour);
+      li.append(b, document.createTextNode(` ${l.text}`));
+    } else {
+      li.textContent = l.text;
+    }
+    ul.append(li);
+  }
+
+  body.append(hd, restoreButton(g, onRestore), ul);
+  return el;
+}
+
+export async function renderHistory(root, onRestore, colourFor = () => null) {
   root.replaceChildren();
   const loading = document.createElement('p');
   loading.className = 'empty';
@@ -36,60 +109,7 @@ export async function renderHistory(root, onRestore) {
     return;
   }
 
-  commits.forEach((c, i) => {
-    const [subject, ...rest] = c.commit.message.split('\n');
-    const details = rest.join('\n').trim().split('\n').filter(Boolean);
-
-    const card = document.createElement('article');
-    card.className = 'commit';
-    card.style.animationDelay = `${Math.min(i, 12) * 0.03}s`;
-
-    const who = document.createElement('div');
-    who.className = 'who';
-    const colon = subject.indexOf(':');
-    if (colon > 0) {
-      const em = document.createElement('em');
-      em.textContent = subject.slice(0, colon);
-      who.append(em, document.createTextNode(subject.slice(colon)));
-    } else {
-      who.textContent = subject;
-    }
-
-    const when = document.createElement('time');
-    when.dateTime = c.commit.author.date;
-    when.textContent = relative(c.commit.author.date);
-    when.title = new Date(c.commit.author.date).toLocaleString();
-
-    const restore = document.createElement('button');
-    restore.className = 'ghost restore';
-    restore.textContent = 'Restore';
-    restore.onclick = async () => {
-      if (!confirm(
-        `Restore the roster as it was at "${subject}"?\n\n` +
-        `This loads it into the editor — you still have to press Save.`)) return;
-      restore.disabled = true;
-      restore.textContent = 'Loading…';
-      try {
-        onRestore(await loadVersion(c.sha));
-      } catch (e) {
-        alert(e.message);
-        restore.disabled = false;
-        restore.textContent = 'Restore';
-      }
-    };
-
-    card.append(who, restore, when);
-
-    if (details.length) {
-      const ul = document.createElement('ul');
-      for (const d of details.slice(0, 20)) {
-        const li = document.createElement('li');
-        li.textContent = d;
-        ul.append(li);
-      }
-      card.append(ul);
-    }
-
-    root.append(card);
+  groupCommits(commits).forEach((g, i) => {
+    root.append(g.reset ? turn(g, onRestore) : entry(g, i, onRestore, colourFor));
   });
 }

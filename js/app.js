@@ -1,12 +1,13 @@
 import { loadRoster, saveRoster, Stale } from './api.js';
 import { computeAll } from './compute.js';
-import { renderRoster, flashSaved } from './roster-ui.js';
+import { CLASS_COLORS } from './game-data.js';
+import { renderRoster, flashSaved, showAsk, hideAsk } from './roster-ui.js';
 import { renderCoverage } from './coverage-ui.js';
 import { renderHistory } from './history-ui.js';
 
 const el = id => document.getElementById(id);
 
-const state = { roster: null, sha: null, filter: '' };
+const state = { roster: null, sha: null, filter: '', open: null, needName: false };
 let base = null;              // last persisted snapshot, for diffing
 let touched = new Set();      // player ids this browser has edited
 let removed = new Set();      // player ids this browser has removed
@@ -54,12 +55,23 @@ function describeChanges(before, after) {
 /* ------------------------------------------------------------ identity */
 
 function actor() {
-  const v = el('actor').value.trim();
-  return v || 'someone';
+  return el('actor').value.trim();
 }
 
 el('actor').value = localStorage.getItem('actor') || '';
-el('actor').oninput = () => localStorage.setItem('actor', el('actor').value.trim());
+el('actor').oninput = () => {
+  localStorage.setItem('actor', actor());
+  if (state.needName && actor()) nameGiven(actor());
+};
+
+/** A name arrived, from the masthead or the inline ask: release the held save. */
+function nameGiven(name) {
+  if (el('actor').value !== name) el('actor').value = name;
+  localStorage.setItem('actor', name);
+  state.needName = false;
+  hideAsk(el('tab-roster'));
+  schedule();
+}
 
 /* -------------------------------------------------------------- status */
 
@@ -96,24 +108,41 @@ function reapply(fresh) {
   return fresh;
 }
 
+/**
+ * Send a snapshot, and hand it back with the result. The baseline after a
+ * save must be what was SENT, not what the roster looks like when the reply
+ * arrives: anything typed in between would otherwise be absorbed into the
+ * baseline and never get a line in the change log.
+ */
 async function push() {
   const changes = describeChanges(base, state.roster);
   if (!changes.length) return null;
-  return saveRoster({
-    roster: state.roster,
+  const sent = structuredClone(state.roster);
+  const result = await saveRoster({
+    roster: sent,
     sha: state.sha,
     actor: actor(),
     summary: changes[0] + (changes.length > 1 ? ` (+${changes.length - 1} more)` : ''),
     details: changes,
   });
+  return { ...result, sent };
 }
 
 async function flush() {
   if (inFlight) { queued = true; return; }
   if (!state.sha) { setStatus('offline — changes are not being saved', 'err'); return; }
 
+  markAll();
   const changes = describeChanges(base, state.roster);
   if (!changes.length) { setStatus(''); return; }   // edits cancelled each other out
+
+  // A change with nobody's name on it is held, not saved as "someone".
+  if (!actor()) {
+    state.needName = true;
+    showAsk(el('tab-roster'), { open: state.open, onName: nameGiven });
+    setStatus('add your name to save', 'warn');
+    return;
+  }
 
   inFlight = true;
   const saving = new Set(touched);
@@ -140,7 +169,7 @@ async function flush() {
 
     if (result) {
       state.sha = result.sha;
-      base = structuredClone(state.roster);
+      base = result.sent;
       touched.clear();
       removed.clear();
       setStatus('saved', 'ok', 2600);
@@ -190,7 +219,12 @@ function render() {
   repaintChrome();
   renderRoster(el('tab-roster'), state.roster, {
     filter: state.filter,
+    open: state.open,
+    needName: state.needName,
+    onName: nameGiven,
     onFilter: v => { state.filter = v; render(); },
+    onOpen: id => { state.open = id; render(); },
+    onClose: () => { state.open = null; render(); },
 
     // Typing: never rebuild the cards, that would steal the caret.
     commitSoft: () => { markAll(); repaintChrome(); schedule(); },
@@ -203,6 +237,7 @@ function render() {
       removed.add(p.id);
       const i = state.roster.players.indexOf(p);
       if (i >= 0) state.roster.players.splice(i, 1);
+      if (state.open === p.id) state.open = null;
       render();
       schedule();
     },
@@ -219,6 +254,8 @@ function render() {
       state.roster.players.push(p);
       touched.add(p.id);
       state.filter = '';
+      state.open = p.id;
+      el('tab-roster').querySelector('.field').value = '';
       render();
       const input = el('tab-roster')
         .querySelector(`.plate[data-id="${CSS.escape(p.id)}"] .who`);
@@ -234,6 +271,12 @@ function markAll() {
   for (const p of state.roster.players) {
     if (was.get(p.id) !== JSON.stringify(p)) touched.add(p.id);
   }
+}
+
+/** Class colour for a name on the current roster, for the change log. */
+function colourFor(name) {
+  const p = state.roster?.players.find(q => (q.name || '').trim() === name);
+  return p ? CLASS_COLORS[p.main?.class] || null : null;
 }
 
 /* ---------------------------------------------------------------- tabs */
@@ -258,7 +301,7 @@ for (const btn of document.querySelectorAll('.tabs button')) {
         document.querySelector('.tabs button[data-tab="roster"]').click();
         render();
         schedule();
-      });
+      }, colourFor);
     }
   };
 }
