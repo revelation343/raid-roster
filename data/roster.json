@@ -1,5 +1,22 @@
 {
   "version": 1,
   "title": "Echoes of the Infinite — Unbinding of Kith'ix",
-  "players": []
+  "players": [
+    {
+      "id": "pmuplclts6296",
+      "name": "Silence",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
+    }
+  ]
 }
