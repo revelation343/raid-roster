@@ -543,14 +543,15 @@ input.note::placeholder { color: var(--faint); font-style: normal; }
 .block td.label { padding: 0; }
 .block td.label.tag { padding-left: 0; }
 
-button.reveal {
+/* every label, openable or not, is laid out the same way */
+.reveal {
   display: flex; align-items: center; gap: .4rem;
   width: 100%; background: none; border: none;
   color: inherit; font: inherit; text-align: left;
-  padding: .34rem .7rem; cursor: pointer;
-  transition: color .15s ease;
+  padding: .34rem .7rem;
 }
-.block td.tag button.reveal { padding-left: .55rem; }
+.block td.tag .reveal { padding-left: .55rem; }
+button.reveal { cursor: pointer; transition: color .15s ease; }
 button.reveal:hover { color: var(--accent-hi); }
 button.reveal:focus-visible { outline: 1px solid var(--accent-hi); outline-offset: -2px; }
 
@@ -558,6 +559,7 @@ button.reveal:focus-visible { outline: 1px solid var(--accent-hi); outline-offse
   display: inline-block; font-size: .55rem; color: var(--faint);
   transition: transform .2s cubic-bezier(.2,.7,.3,1), color .15s ease;
 }
+.reveal.static .chev { visibility: hidden; }   /* keeps its width so the text lines up */
 tr.tally.open .chev { transform: rotate(90deg); color: var(--accent-hi); }
 button.reveal:hover .chev { color: var(--accent-hi); }
 

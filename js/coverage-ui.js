@@ -79,7 +79,9 @@ function block(blockId, title, rows, opts = {}) {
     if (r.rule) tr.classList.add('rule-top');
     if (isOpen) tr.classList.add('open');
 
-    // ---- label cell, a button when there is something to reveal
+    // ---- label cell. Same structure whether or not there is anything to
+    // reveal — the chevron stays as an invisible placeholder — so labels line
+    // up down the column instead of jumping left on rows that count nobody.
     const labelCell = document.createElement('td');
     labelCell.className = 'label';
     if (colourByClass) {
@@ -88,30 +90,28 @@ function block(blockId, title, rows, opts = {}) {
     }
     if (r.soft) labelCell.classList.add('soft');
 
+    const reveal = document.createElement(expandable ? 'button' : 'span');
+    reveal.className = expandable ? 'reveal' : 'reveal static';
+    const chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.setAttribute('aria-hidden', 'true');
+    chev.textContent = '❯';
+    const txt = document.createElement('span');
+    txt.textContent = r.label;
+    reveal.append(chev, txt);
+    labelCell.append(reveal);
+
     let panel = null;
     if (expandable) {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'reveal';
-      btn.setAttribute('aria-expanded', String(isOpen));
-      const chev = document.createElement('span');
-      chev.className = 'chev';
-      chev.setAttribute('aria-hidden', 'true');
-      chev.textContent = '❯';
-      const txt = document.createElement('span');
-      txt.textContent = r.label;
-      btn.append(chev, txt);
-      labelCell.append(btn);
-
-      btn.onclick = () => {
+      reveal.type = 'button';
+      reveal.setAttribute('aria-expanded', String(isOpen));
+      reveal.onclick = () => {
         const nowOpen = !open.has(id);
         nowOpen ? open.add(id) : open.delete(id);
-        btn.setAttribute('aria-expanded', String(nowOpen));
+        reveal.setAttribute('aria-expanded', String(nowOpen));
         tr.classList.toggle('open', nowOpen);
         panel.hidden = !nowOpen;
       };
-    } else {
-      labelCell.textContent = r.label;
     }
 
     const main = document.createElement('td');
@@ -211,11 +211,14 @@ export function renderCoverage(root, d, onPick) {
     block('cds', 'Cooldown profiles', cds, { onPick }),
   );
 
-  const hint = document.createElement('p');
-  hint.className = 'hint';
-  hint.textContent = 'Click any row to see who it counts.';
-
-  root.append(summary, hint, grid);
+  root.append(summary);
+  if (d.totals.lockedIn + d.totals.bench + d.totals.out) {
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click any row to see who it counts.';
+    root.append(hint);
+  }
+  root.append(grid);
 
   if (un.main) {
     const note = document.createElement('p');
