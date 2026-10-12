@@ -119,7 +119,7 @@
       "name": "Prizepatrol",
       "main": {
         "class": "Warrior",
-        "spec": null,
+        "spec": "Arms",
         "offSpec": null
       },
       "alt": {
