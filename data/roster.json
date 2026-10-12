@@ -118,7 +118,7 @@
       "id": "pmv5oqwoo4342",
       "name": "Prizepatrol",
       "main": {
-        "class": null,
+        "class": "Warrior",
         "spec": null,
         "offSpec": null
       },
