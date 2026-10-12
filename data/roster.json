@@ -113,6 +113,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmv5oqwoo4342",
+      "name": "Prizepatrol",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
