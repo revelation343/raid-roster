@@ -39,7 +39,7 @@
       "name": "Ninjini",
       "main": {
         "class": "Rogue",
-        "spec": null,
+        "spec": "Subtlety",
         "offSpec": null
       },
       "alt": {
