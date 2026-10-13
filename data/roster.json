@@ -83,22 +83,6 @@
       "status": "locked"
     },
     {
-      "id": "pmv5n06ta3531",
-      "name": "",
-      "main": {
-        "class": null,
-        "spec": null,
-        "offSpec": null
-      },
-      "alt": {
-        "class": null,
-        "spec": null,
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
-    },
-    {
       "id": "pmv5n0dcc4089",
       "name": "Barrymanilow",
       "main": {
