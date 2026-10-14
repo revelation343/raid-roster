@@ -145,6 +145,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmv8occbt2934",
+      "name": "",
+      "main": {
+        "class": "Paladin",
+        "spec": "Retribution",
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
