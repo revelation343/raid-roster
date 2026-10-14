@@ -119,7 +119,7 @@
       "name": "Raevive",
       "main": {
         "class": "Priest",
-        "spec": null,
+        "spec": "Holy",
         "offSpec": null
       },
       "alt": {
