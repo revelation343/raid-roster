@@ -209,6 +209,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmvbgl1ue1563",
+      "name": "Strongjaw",
+      "main": {
+        "class": "Warrior",
+        "spec": "Arms",
+        "offSpec": "Fury"
+      },
+      "alt": {
+        "class": "Death Knight",
+        "spec": "Blood",
+        "offSpec": "Unholy"
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
