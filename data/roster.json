@@ -161,6 +161,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmvafn0hw4173",
+      "name": "Yadhi ",
+      "main": {
+        "class": "Monk",
+        "spec": "Brewmaster",
+        "offSpec": null
+      },
+      "alt": {
+        "class": "Warlock",
+        "spec": "Demonology",
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
