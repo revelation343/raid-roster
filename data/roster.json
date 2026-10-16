@@ -177,6 +177,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmvbbq58t3861",
+      "name": "",
+      "main": {
+        "class": "Death Knight",
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
