@@ -184,7 +184,7 @@
       "main": {
         "class": "Death Knight",
         "spec": "Unholy",
-        "offSpec": null
+        "offSpec": "Frost"
       },
       "alt": {
         "class": null,
