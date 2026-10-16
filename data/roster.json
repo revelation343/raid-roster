@@ -193,22 +193,6 @@
       },
       "note": "",
       "status": "locked"
-    },
-    {
-      "id": "pmvbbrc6q5630",
-      "name": "",
-      "main": {
-        "class": "Death Knight",
-        "spec": null,
-        "offSpec": null
-      },
-      "alt": {
-        "class": null,
-        "spec": null,
-        "offSpec": null
-      },
-      "note": "",
-      "status": "locked"
     }
   ]
 }
