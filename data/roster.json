@@ -231,7 +231,7 @@
       "name": "Gobanks",
       "main": {
         "class": "Paladin",
-        "spec": null,
+        "spec": "Protection",
         "offSpec": null
       },
       "alt": {
