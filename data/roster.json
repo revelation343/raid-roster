@@ -241,6 +241,22 @@
       },
       "note": "cause of lump",
       "status": "locked"
+    },
+    {
+      "id": "pmvcl653l1002",
+      "name": "Zuber",
+      "main": {
+        "class": "Rogue",
+        "spec": "Assassination",
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
