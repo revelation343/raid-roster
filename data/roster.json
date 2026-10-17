@@ -225,6 +225,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmvbu0vuc7719",
+      "name": "Gobanks",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
