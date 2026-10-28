@@ -248,7 +248,7 @@
       "main": {
         "class": "Demon Hunter",
         "spec": "Devourer",
-        "offSpec": null
+        "offSpec": "Vengeance"
       },
       "alt": {
         "class": null,
