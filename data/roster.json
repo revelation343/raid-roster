@@ -241,6 +241,22 @@
       },
       "note": "",
       "status": "locked"
+    },
+    {
+      "id": "pmvsi2qe84903",
+      "name": "Lumpdemon",
+      "main": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "alt": {
+        "class": null,
+        "spec": null,
+        "offSpec": null
+      },
+      "note": "",
+      "status": "locked"
     }
   ]
 }
